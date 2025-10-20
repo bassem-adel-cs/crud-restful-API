@@ -46,7 +46,7 @@ project/
   "data": {
     "id": "1",
     "name": "Ahmed",
-    "email": "ahmed@example.com"
+    "age":50
   }
 }
 
