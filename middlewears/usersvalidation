@@ -1,0 +1,48 @@
+const Ajv = require("ajv");
+const ajvErrors = require("ajv-errors");
+const status=require("../utlite/status")
+const ajv = new Ajv({ allErrors: true });
+ajvErrors(ajv);
+
+const schema = {
+  type: "object",
+  properties: {
+    name: {
+      type: "string",
+      minLength: 5,
+      errorMessage: {
+        type: "the name should be a string",
+        minLength: "the name should be grater tahn 5 characters"
+      }
+    },
+    age: {
+      type: "number",
+      minimum: 18,
+      errorMessage: {
+        type: "the age should be number",
+        minimum: "the age should be grater than 18 years old"
+      }
+    }
+  },
+  required: ["name", "age"],
+  errorMessage: {
+    required: {
+      name: "the name is required",
+      age: "the age is required"
+    }
+  }
+};
+
+const validate = ajv.compile(schema);
+
+module.exports=function(err,req,res,next){
+const valid=validate(req.body)
+ if (!valid) {
+    return res.status(400).json({
+      status: status.error,
+      errors:err.message,
+    
+  })
+}
+  next();
+}
