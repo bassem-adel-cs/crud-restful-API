@@ -40,15 +40,73 @@ project/
 3. The API runs on:  
    `http://localhost:5000`
 
-## 📬 Example Response
+🧩 Example Requests & Bodies
+🟢 Create a New User
+
+Endpoint:
+POST /api/users
+
+Request Body:
+
+{
+  "name": "Ahmed",
+  "age": 50
+}
+
+
+Example Success Response:
+
 {
   "status": "success",
   "data": {
     "id": "1",
     "name": "Ahmed",
-    "age":50
+    "age": 50
   }
 }
+
+🟡 Update User by ID
+
+Endpoint:
+PUT /api/users/:id
+
+Request Body:
+
+{
+  "name": "Ahmed Ali",
+  "age": 51
+}
+
+🔵 Get All Users
+
+Endpoint:
+GET /api/users
+
+Response Example:
+
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "1",
+      "name": "Ahmed Ali",
+      "age": 51
+    }
+  ]
+}
+
+🔴 Delete User
+
+Endpoint:
+DELETE /api/users/:id
+
+Response Example:
+
+{
+  "status": "success",
+  "message": "User deleted successfully"
+}
+
 
 ## 👨‍💻 About
 This project was created for training purposes to practice building RESTful APIs using **Node.js**, **Express.js**, and **MongoDB**.
